@@ -1,0 +1,371 @@
+.homePage {
+     width:100vw;
+     height: 100vh;
+     top:0;
+     bottom:0;
+     left: 0;
+     right: 0;
+}
+
+
+/*************************/
+/* CSS HEADER HOME PAGE*/
+/*************************/
+
+.headerPage {
+     width:100%;
+     height:100px;
+     top:0;
+     position: absolute;
+     box-shadow: #03d6a834 0px 2px 5px 0px, #03d6a838 0px 1px 1px 0px;
+     display: flex;
+     align-items: center;
+     justify-content: space-evenly;
+}
+
+.titlePage {
+     display:flex;
+     font-weight: 800;
+     font-size:30px;
+     cursor: pointer;
+}
+
+.searchBtn {
+     width:20%;
+     height:auto;
+     margin-left:10px;
+}
+
+.spaceDisplay {
+     width:20%;
+     display:none;
+}
+
+.searchBtnDisplay {
+     display:none;
+}
+
+.searchInputDisplay {
+     width:250px;
+     height:auto;
+     margin-top:120px;
+     margin-right:50px;
+     position: absolute;
+}
+
+.iconCategoryHead {
+     display:none;
+}
+
+.categoryDisplay {
+     position: absolute;
+     margin-top:230px;
+     width:200px;
+     height:auto;
+     padding:15px 20px 15px 20px;
+     background-color: white;
+     border-radius: 25px;
+     box-shadow: rgba(94, 234, 213, 0.473) 0px 3px 8px;
+     animation-duration: 0.5s;
+     animation-name: appear;
+     animation-direction: alternate;
+}
+
+@keyframes appear {
+     from {
+          opacity: 0%;
+     }
+     to {
+          opacity: 100%;
+     }
+}
+
+.listCategoryDisplay {
+     width:auto;
+     height:auto;
+     display: flex;
+     align-items:flex-end;
+     flex-direction: column;
+     justify-content: space-between;
+     cursor: pointer;
+     color: rgba(0, 0, 0, 0.849);
+     margin-left:10px;
+}
+
+.itemListDisplay {
+     margin-bottom:15px;
+     font-size:15px;
+     font-weight: 600;
+}
+
+.itemListDisplay:hover {
+     color:rgb(94 234 212);
+}
+
+.upSoundDisplay {
+     display:none;
+     align-items: center;
+}
+
+.listCategory {
+     width:auto;
+     height:auto;
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
+     cursor: pointer;
+     color: rgba(0, 0, 0, 0.849);
+     margin-left:10px;
+}
+
+.itemList {
+     padding-right:40px;
+     font-size:15px;
+     font-weight: 600;
+}
+
+.playList {
+     display: flex;
+     justify-content: center;
+}
+
+.itemList:hover {
+     color:rgb(94 234 212);
+}
+
+.playList:hover {
+     color:black;
+}
+
+.listPlaylist {
+     position: absolute;
+     margin-top:50px;
+     display: flex;
+     flex-direction: column;
+     align-items: flex-end;
+     width: auto;
+     height: auto;
+     padding:20px;
+     background-color: white;
+     border-radius: 25px;
+     box-shadow: rgba(94, 234, 213, 0.473) 0px 3px 8px;
+     animation-duration: 0.5s;
+     animation-name: appear;
+     animation-direction: alternate;
+}
+
+.listPlaylist li{
+     padding-bottom:10px;
+     font-weight: 500;
+     color: rgba(0, 0, 0, 0.849);
+}
+
+.listPlaylist li:hover {
+     color:rgb(94 234 212);
+}
+
+.upSoundBtn {
+     display: flex;
+     align-items: center;
+     font-weight: 700;
+     width:auto;
+     height:auto;
+     padding:10px 20px 10px 20px;
+     background-color: rgb(94 234 212);
+     border-radius: 25px;
+     cursor: pointer;
+     color:rgb(66, 47, 47);
+     margin-left:-30px;
+     font-size:15px;
+}
+
+.listItemNoti {
+     display: flex;
+     align-items: center;
+}
+
+.listItemNoti li{
+     margin-right:20px;
+}
+
+.userHead {
+     display: flex;
+     align-items: center;
+}
+
+.avtUser {
+     margin-left: 10px;
+}
+
+@media (max-width: 1210px) {
+     .titlePage {
+          font-size:25px;
+     }
+
+     .searchBtn {
+          width:15%;
+     }
+}
+
+@media (max-width : 1110px) {
+     .itemList {
+          font-size: 13px;
+          padding-right:20px;
+     }
+
+     .playList {
+          color: rgba(0, 0, 0, 0.849);
+     }
+
+     .playList svg{
+          width:20px;
+          height:20px;
+     }
+
+     .upSoundBtn {
+          margin-left:-10px;
+          font-size:13px;
+          padding:7px 10px 7px 10px;
+     }
+
+     .upSoundBtn svg{
+          width:15px;
+          height:15px;
+     }
+}
+
+@media (max-width: 950px) {
+     .categoryHead {
+          display: none;
+     }
+
+     .searchBtn {
+          width: 25%;
+     }
+
+     .iconCategoryHead {
+          display: block ;
+     }
+}
+
+@media (max-width:740px) {
+     .upSoundBtn span{
+          display:none;
+     }
+
+     .upSoundBtn svg{
+          margin-right:0px;
+     }
+
+     .userHead {
+          margin-left:-10px;
+     }
+}
+
+@media (max-width:610px) {
+     .userHead {
+          margin-left:10px;
+     }
+
+     .upSoundBtn {
+          margin-left:10px;
+     }
+}
+
+@media (max-width:580px) {
+     .upSoundBtn {
+          display: none;
+     }
+
+     .upSoundDisplay {
+          display: flex;
+     }
+
+     .iconCategoryHead {
+          margin-left:10px;
+     }
+
+     .searchBtn {
+          display: none;
+     }
+
+     .spaceDisplay, .searchBtnDisplay {
+          display: block;
+     }
+
+     .categoryDisplay {
+          margin-top:270px;
+     }
+}
+
+@media (max-width:500px) {
+     .spaceDisplay {
+          width:10%;
+     }
+}
+
+@media (max-width:420px) {
+     .titleHead {
+          font-size:177px;
+     }
+
+     .listItemNoti li{
+          margin-right:5px;
+     }
+
+     .notiActive, .notiAdmin {
+          margin-right:5px;
+     }
+
+     .avtUser img{
+          width:30px;
+          height: 30px;
+     }
+}
+
+
+/*************************/
+/* CSS MENU PLAYER SOUND */
+/*************************/
+
+.menuPage {
+     width:100%;
+     height:90px;
+     border-top-right-radius: 40px;
+     border-top-left-radius: 40px;
+     bottom:0;
+     position: fixed;
+     box-shadow: #03d6a866 0px 30px 90px;
+     display: flex;
+     align-items: center;
+     justify-content: space-evenly;
+}
+
+.listPlaySound {
+     display:flex;
+     align-items: center;
+     cursor: pointer;
+}
+
+.listPlaySound svg{
+     width:23px;
+     height:23px;
+     margin-right:30px;
+}
+
+.addActive {
+     color:rgb(218, 18, 18);
+}
+
+.timeLineSound {
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+}
+
+.timeStartSound, .timeEndSound {
+     font-size:18px;
+     font-weight: 500;
+     margin-right:20px;
+     margin-left:20px;
+}
