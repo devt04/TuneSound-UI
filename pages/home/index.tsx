@@ -2,42 +2,45 @@
 import clsx from "clsx";
 import '/public/globals.css'
 import style from "./home.module.css"
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 
 export default function Home() {
 
-     const time = 10;
-     let start = 1;
-
-     const countTime = () => {
-          start = start + 1;
-          if(start > time) {
-               return start = 0;
-          }
-     }
-
+     const [start, setStart] = useState(0);
+     const [time, setTime] = useState(7280);
      const [isHide, setIsHide] = useState(false);
      const [isCategory, setIsCategory] = useState(false);
      const [isSearch, setIsSearch] = useState(false);
      const [isPlayed, setIsPlayed] = useState(false);
      const [isStatus, setIsStatus] = useState("random");
      const [isActive, setIsActive] = useState(false);
+     const [isMute, setIsMute] = useState(false);
+     const [isLiked, setIsLiked] = useState(false);
+
+     const handleChangeLike = () => {
+          setIsLiked(!isLiked);
+     }
+
+     const handleChangeMute = () => {
+          setIsMute(!isMute);
+     }
+
      const handleChangeHide = () => {
-          !isHide ? setIsHide(true) : setIsHide(false);
+          setIsHide(!isHide);
      }
 
      const handleChangeCategory = () => {
-          !isCategory ? setIsCategory(true) : setIsCategory(false);
+          setIsCategory(!isCategory);
           setIsHide(false);
      }
 
      const handleChangeSearch = () => {
-          !isSearch ? setIsSearch(true) : setIsSearch(false);
+         setIsSearch(!isSearch);
      }
 
      const handleChangePlayed = () => {
-          !isPlayed ? setIsPlayed(true) : setIsPlayed(false);
+          setIsPlayed(!isPlayed);
      }
 
      const handleChangeStatus = () => {
@@ -45,11 +48,79 @@ export default function Home() {
      }
 
      const handleChangeActive = () => {
-          isActive ? setIsActive(false) : setIsActive(true);
+          setIsActive(!isActive);
      }
 
-     if (isPlayed) {
-          setInterval(countTime, 1000);
+     useEffect(() => {
+          if (start < time && isPlayed) {
+               const intervalId = setInterval(() => {
+                    setStart((prevStart) => prevStart + 1);
+               }, 1000);
+          
+               return () => {
+                    clearInterval(intervalId);
+               };
+          }
+     }, [time, start, isPlayed]);
+
+     const handleRangeChange = (e: any) => {
+          setStart(parseInt(e.target.value, 10));
+     };
+
+     function PrintStart() {
+          if(start < 10) {
+               return(
+                    <p>0 : 0{start}</p>
+               )
+          }
+          if(start >= 10 && start < 60) {
+               return (
+                    <p>0 : {start}</p>
+               )
+          }
+          if (start >= 60 && start < 3600) {
+               let p = Math.floor(start / 60);
+               let g = start % 60;
+               return (
+                    <p>{p} : {g >= 10 ? g : `0` + g}</p>
+               )
+          }
+          if(start >= 3600) {
+               let h = Math.floor(start / 3600);
+               let p = Math.floor((start % 3600) / 60);
+               let g = (start % 3600) % 60;
+               return (
+                    <p>{h} : {p >= 10 ? p : `0` + p} : {g >= 10 ? g : `0` + g}</p>
+               )
+          }
+     }
+
+     function PrintEnd() {
+          if(time < 10) {
+               return(
+                    <p>0 : 0{time}</p>
+               )
+          }
+          if(time >= 10 && time < 60) {
+               return (
+                    <p>0 : {time}</p>
+               )
+          }
+          if (time >= 60 && time < 3600) {
+               let p = Math.floor(time / 60);
+               let g = time % 60;
+               return (
+                    <p>{p} : {g >= 10 ? g : `0` + g}</p>
+               )
+          }
+          if(time >= 3600) {
+               let h = Math.floor(time / 3600);
+               let p = Math.floor((time % 3600) / 60);
+               let g = (time % 3600) % 60;
+               return (
+                    <p>{h} : {p >= 10 ? p : `0` + p} : {g >= 10 ? g : `0` + g}</p>
+               )
+          }
      }
 
      return (
@@ -335,19 +406,82 @@ export default function Home() {
                          <div className={clsx(style.notiUser)}>
                               <ul className={clsx(style.listItemNoti)}>
                                    <li className={clsx(style.notiActive, "relative")}>
-                                        <svg 
-                                        xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.855 -0.855 24 24" height="24" width="24"><g id="bell-notification--alert-bell-ring-notification-alarm"><path id="Ellipse 85" stroke="#786566" strokeLinecap="round" strokeLinejoin="round" d="M9.038594999999999 19.834915714285714a2.3882142857142856 2.3882142857142856 0 0 0 4.212809999999999 0" strokeWidth="1.71"></path><path id="Vector" fill="#5eead4" d="M6.785712857142856 2.9995971428571426a6.164777142857142 6.164777142857142 0 0 1 10.524064285714285 4.359287142857142c0 0.9616542857142857 0.15921428571428572 1.8643992857142857 0.39803571428571427 2.7894342857142855 0.06527785714285714 0.21016285714285715 0.14010857142857142 0.4075885714285714 0.21812357142857144 0.5938692857142857 0.36937714285714285 0.8677178571428572 1.3867564285714284 1.1654485714285714 2.1462085714285717 1.7258828571428573 1.1320135714285713 0.8390592857142857 0.9138899999999999 2.6334042857142856 -0.028658571428571426 3.330762857142857 0 0 -1.5220885714285712 1.3167021428571428 -8.89848642857143 1.3167021428571428 -7.3779900000000005 0 -8.89848642857143 -1.3167021428571428 -8.89848642857143 -1.3167021428571428 -0.9425485714285713 -0.6973585714285714 -1.1622642857142857 -2.4917035714285714 -0.028658571428571426 -3.330762857142857 0.7594521428571428 -0.5604342857142857 1.7768314285714286 -0.8581650000000001 2.1462085714285717 -1.7258828571428573 0.36778500000000003 -0.8661257142857143 0.6161592857142857 -1.9742571428571427 0.6161592857142857 -3.3833035714285713 0 -1.635130714285714 0.6495942857142857 -3.2033914285714284 1.8054899999999998 -4.359287142857142Z" strokeWidth="1.71"></path><path id="Vector_2" stroke="#786566" strokeLinecap="round" strokeLinejoin="round" d="M6.785712857142856 2.9995971428571426a6.164777142857142 6.164777142857142 0 0 1 10.524064285714285 4.359287142857142c0 0.9616542857142857 0.15921428571428572 1.8643992857142857 0.39803571428571427 2.7894342857142855 0.06527785714285714 0.21016285714285715 0.14010857142857142 0.4075885714285714 0.21812357142857144 0.5938692857142857 0.36937714285714285 0.8677178571428572 1.3867564285714284 1.1654485714285714 2.1462085714285717 1.7258828571428573 1.1320135714285713 0.8390592857142857 0.9138899999999999 2.6334042857142856 -0.028658571428571426 3.330762857142857 0 0 -1.5220885714285712 1.3167021428571428 -8.89848642857143 1.3167021428571428 -7.3779900000000005 0 -8.89848642857143 -1.3167021428571428 -8.89848642857143 -1.3167021428571428 -0.9425485714285713 -0.6973585714285714 -1.1622642857142857 -2.4917035714285714 -0.028658571428571426 -3.330762857142857 0.7594521428571428 -0.5604342857142857 1.7768314285714286 -0.8581650000000001 2.1462085714285717 -1.7258828571428573 0.36778500000000003 -0.8661257142857143 0.6161592857142857 -1.9742571428571427 0.6161592857142857 -3.3833035714285713 0 -1.635130714285714 0.6495942857142857 -3.2033914285714284 1.8054899999999998 -4.359287142857142Z" strokeWidth="1.71"></path></g>
+                                        <svg width="24" height="24" fill="none" viewBox="-.855 -.855 24 24" xmlns="http://www.w3.org/2000/svg">
+                                             <path 
+                                                  d="m9.0386 19.835a2.3882 2.3882 0 0 0 4.2128 0" 
+                                                  stroke="#786566" 
+                                                  strokeLinecap="round" 
+                                                  strokeLinejoin="round" 
+                                                  strokeWidth="1.71">
+                                             </path>
+                                             <path 
+                                                  d="m6.7857 2.9996a6.1648 6.1648 0 0 1 10.524 4.3593c0 0.96165 0.15921 1.8644 0.39804 2.7894 
+                                                  0.065278 0.21016 0.14011 0.40759 0.21812 0.59387 0.36938 0.86772 1.3868 1.1654 2.1462 1.7259 
+                                                  1.132 0.83906 0.91389 2.6334-0.028659 3.3308 0 0-1.5221 1.3167-8.8985 1.3167-7.378 
+                                                  0-8.8985-1.3167-8.8985-1.3167-0.94255-0.69736-1.1623-2.4917-0.028659-3.3308 0.75945-0.56043 
+                                                  1.7768-0.85817 2.1462-1.7259 0.36779-0.86613 0.61616-1.9743 0.61616-3.3833 0-1.6351 0.64959-3.2034 
+                                                  1.8055-4.3593z" 
+                                                  fill="#5eead4" 
+                                                  strokeWidth="1.71">
+                                             </path>
+                                             <path 
+                                                  d="m6.7857 2.9996a6.1648 6.1648 0 0 1 10.524 4.3593c0 0.96165 0.15921 1.8644 0.39804 2.7894 0.065278 
+                                                  0.21016 0.14011 0.40759 0.21812 0.59387 0.36938 0.86772 1.3868 1.1654 2.1462 1.7259 1.132 0.83906 
+                                                  0.91389 2.6334-0.028659 3.3308 0 0-1.5221 1.3167-8.8985 1.3167-7.378 
+                                                  0-8.8985-1.3167-8.8985-1.3167-0.94255-0.69736-1.1623-2.4917-0.028659-3.3308 0.75945-0.56043 1.7768-0.85817 
+                                                  2.1462-1.7259 0.36779-0.86613 0.61616-1.9743 0.61616-3.3833 0-1.6351 0.64959-3.2034 1.8055-4.3593z" 
+                                                  stroke="#786566" 
+                                                  strokeLinecap="round" 
+                                                  strokeLinejoin="round" 
+                                                  strokeWidth="1.71">
+                                             </path>
                                         </svg>
+
                                         <span 
-                                             className="top-[-3px] left-3.5 absolute  w-[10px] h-[10px] bg-rose-600 border-2 border-white dark:border-rose-600 rounded-full">
+                                             className="
+                                                  top-[-3px] left-3.5 absolute  w-[10px] h-[10px] bg-rose-600 border-2 
+                                                  border-white dark:border-rose-600 rounded-full"
+                                        >
                                         </span>
                                    </li>
                                    <li className={clsx(style.notiAdmin, "relative")}>
-                                        <svg 
-                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="-0.855 -0.855 24 24" height="24" width="24"><g id="mail-send-envelope--envelope-email-message-unopened-sealed-close"><path id="Intersect" fill="#5eead4" d="M1.6430914285714286 16.776409285714287a3.330762857142857 3.330762857142857 0 0 0 2.9486485714285715 2.888147142857143c2.115957857142857 0.22290000000000001 4.3067464285714285 0.4553528571428571 6.553259999999999 0.4553528571428571 2.2449214285714283 0 4.437302142857143 -0.23404499999999998 6.553259999999999 -0.4553528571428571a3.327578571428571 3.327578571428571 0 0 0 2.9486485714285715 -2.888147142857143c0.22608428571428568 -1.8214114285714285 0.44898428571428567 -3.703324285714286 0.44898428571428567 -5.631409285714286 0 -1.926492857142857 -0.22290000000000001 -3.8099978571428568 -0.44898428571428567 -5.631409285714286a3.330762857142857 3.330762857142857 0 0 0 -2.9486485714285715 -2.8897392857142856C15.582302142857143 2.4041357142857143 13.389921428571428 2.1716828571428572 11.145 2.1716828571428572c-2.2449214285714283 0 -4.437302142857143 0.23404499999999998 -6.553259999999999 0.4553528571428571a3.327578571428571 3.327578571428571 0 0 0 -2.9486485714285715 2.888147142857143C1.417007142857143 7.335002142857143 1.1941071428571428 9.218507142857142 1.1941071428571428 11.145s0.22290000000000001 3.8099978571428568 0.44898428571428567 5.631409285714286Z" strokeWidth="1.71"></path><path id="Intersect_2" stroke="#786566" strokeLinecap="round" strokeLinejoin="round" d="M1.6430914285714286 16.776409285714287a3.330762857142857 3.330762857142857 0 0 0 2.9486485714285715 2.888147142857143c2.115957857142857 0.22290000000000001 4.3067464285714285 0.4553528571428571 6.553259999999999 0.4553528571428571 2.2449214285714283 0 4.437302142857143 -0.23404499999999998 6.553259999999999 -0.4553528571428571a3.327578571428571 3.327578571428571 0 0 0 2.9486485714285715 -2.888147142857143c0.22608428571428568 -1.8214114285714285 0.44898428571428567 -3.703324285714286 0.44898428571428567 -5.631409285714286 0 -1.926492857142857 -0.22290000000000001 -3.8099978571428568 -0.44898428571428567 -5.631409285714286a3.330762857142857 3.330762857142857 0 0 0 -2.9486485714285715 -2.8897392857142856C15.582302142857143 2.4041357142857143 13.389921428571428 2.1716828571428572 11.145 2.1716828571428572c-2.2449214285714283 0 -4.437302142857143 0.23404499999999998 -6.553259999999999 0.4553528571428571a3.327578571428571 3.327578571428571 0 0 0 -2.9486485714285715 2.888147142857143C1.417007142857143 7.335002142857143 1.1941071428571428 9.218507142857142 1.1941071428571428 11.145s0.22290000000000001 3.8099978571428568 0.44898428571428567 5.631409285714286Z" strokeWidth="1.71"></path><path id="Vector 15" stroke="#786566" strokeLinecap="round" strokeLinejoin="round" d="m1.6876714285714285 5.1012257142857145 7.486255714285714 5.903665714285714a3.184285714285714 3.184285714285714 0 0 0 3.942145714285714 0l7.486255714285714 -5.903665714285714" strokeWidth="1.71"></path></g>
+                                        <svg width="24" height="24" fill="none" viewBox="-.855 -.855 24 24" xmlns="http://www.w3.org/2000/svg">
+                                             <path 
+                                                  d="m1.6431 16.776a3.3308 3.3308 0 0 0 2.9486 2.8881c2.116 0.2229 4.3067 0.45535 6.5533 0.45535 2.2449 
+                                                  0 4.4373-0.23404 6.5533-0.45535a3.3276 3.3276 0 0 0 2.9486-2.8881c0.22608-1.8214 0.44898-3.7033 
+                                                  0.44898-5.6314 0-1.9265-0.2229-3.81-0.44898-5.6314a3.3308 3.3308 0 0 
+                                                  0-2.9486-2.8897c-2.116-0.21972-4.3083-0.45217-6.5533-0.45217-2.2449 0-4.4373 0.23404-6.5533 
+                                                  0.45535a3.3276 3.3276 0 0 0-2.9486 2.8881c-0.22608 1.8198-0.44898 3.7033-0.44898 5.6298s0.2229 3.81 
+                                                  0.44898 5.6314z" 
+                                                  fill="#5eead4" 
+                                                  strokeWidth="1.71">
+                                             </path>
+                                             <path 
+                                                  d="m1.6431 16.776a3.3308 3.3308 0 0 0 2.9486 2.8881c2.116 0.2229 4.3067 0.45535 6.5533 0.45535 2.2449 
+                                                  0 4.4373-0.23404 6.5533-0.45535a3.3276 3.3276 0 0 0 2.9486-2.8881c0.22608-1.8214 0.44898-3.7033 
+                                                  0.44898-5.6314 0-1.9265-0.2229-3.81-0.44898-5.6314a3.3308 3.3308 0 0 
+                                                  0-2.9486-2.8897c-2.116-0.21972-4.3083-0.45217-6.5533-0.45217-2.2449 0-4.4373 0.23404-6.5533 
+                                                  0.45535a3.3276 3.3276 0 0 0-2.9486 2.8881c-0.22608 1.8198-0.44898 3.7033-0.44898 5.6298s0.2229 
+                                                  3.81 0.44898 5.6314z" 
+                                                  stroke="#786566" 
+                                                  strokeLinecap="round" 
+                                                  strokeLinejoin="round" 
+                                                  strokeWidth="1.71">
+                                             </path>
+                                             <path 
+                                                  d="m1.6877 5.1012 7.4863 5.9037a3.1843 3.1843 0 0 0 3.9421 0l7.4863-5.9037" 
+                                                  stroke="#786566" 
+                                                  strokeLinecap="round" 
+                                                  strokeLinejoin="round" 
+                                                  strokeWidth="1.71">
+                                             </path>
                                         </svg>
+
                                         <span 
-                                             className="top-[-3px] left-4 absolute  w-[10px] h-[10px] bg-rose-600 border-2 border-white dark:border-rose-600 rounded-full">
+                                             className="
+                                                  top-[-3px] left-4 absolute  w-[10px] h-[10px] bg-rose-600 border-2 border-white 
+                                                  dark:border-rose-600 rounded-full"
+                                        >
                                         </span>
                                    </li>
                               </ul>
@@ -375,7 +509,7 @@ export default function Home() {
                                              stroke="currentColor" 
                                              strokeLinecap="round" 
                                              strokeLinejoin="round" 
-                                             strokeWidth="1.9" 
+                                             strokeWidth="0.9" 
                                              d="m1 14 3-3m-3 3 3 3m-3-3h16v-3m2-7-3 3m3-3-3-3m3 3H3v3"/>
                                    </svg>
                               </li>
@@ -387,7 +521,7 @@ export default function Home() {
                                              stroke="currentColor" 
                                              strokeLinecap="round" 
                                              strokeLinejoin="round" 
-                                             strokeWidth="1.5" 
+                                             strokeWidth="0.7" 
                                              d="M1 1v14m8.336-.479-6.5-5.774a1 1 0 0 1 0-1.494l6.5-5.774A1 1 0 0 1 11 2.227v11.546a1 1 0 0 1-1.664.748Z"/>
                                    </svg>
                               </li>     
@@ -400,7 +534,7 @@ export default function Home() {
                                                   stroke="currentColor" 
                                                   strokeLinecap="round" 
                                                   strokeLinejoin="round" 
-                                                  strokeWidth="2" 
+                                                  strokeWidth="0.9" 
                                                   d="M8 7v6m4-6v6m7-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
                                         </svg> :
                                         <svg 
@@ -410,7 +544,7 @@ export default function Home() {
                                                   stroke="currentColor" 
                                                   strokeLinecap="round" 
                                                   strokeLinejoin="round"
-                                                  strokeWidth="2" 
+                                                  strokeWidth="0.9" 
                                                   d="M1 1.984v14.032a1 1 0 0 0 1.506.845l12.006-7.016a.974.974 0 0 
                                                   0 0-1.69L2.506 1.139A1 1 0 0 0 1 1.984Z"/>
                                         </svg>
@@ -424,7 +558,7 @@ export default function Home() {
                                              stroke="currentColor" 
                                              strokeLinecap="round" 
                                              strokeLinejoin="round" 
-                                             strokeWidth="1.5" 
+                                             strokeWidth="0.7" 
                                              d="M11 1v14m-8.336-.479 6.5-5.774a1 1 0 0 0 0-1.494l-6.5-5.774A1 1 0 0 0 1 2.227v11.546a1 1 0 0 0 1.664.748Z"/>
                                    </svg>
                               </li>
@@ -437,7 +571,7 @@ export default function Home() {
                                                   stroke="currentColor" 
                                                   strokeLinecap="round" 
                                                   strokeLinejoin="round" 
-                                                  strokeWidth="2" 
+                                                  strokeWidth="1" 
                                                   d="M11.484 6.166 13 4h6m0 0-3-3m3 3-3 3M1 14h5l1.577-2.253M1 4h5l7 10h6m0 0-3 3m3-3-3-3"/>
                                         </svg> : 
                                         <svg 
@@ -447,7 +581,7 @@ export default function Home() {
                                                   stroke="currentColor" 
                                                   strokeLinecap="round" 
                                                   strokeLinejoin="round" 
-                                                  strokeWidth="1.7" 
+                                                  strokeWidth="0.7" 
                                                   d="M11 10H1m0 0 3-3m-3 3 3 3m1-9h10m0 0-3 3m3-3-3-3"/>
                                         </svg>
                                    }
@@ -455,32 +589,114 @@ export default function Home() {
                          </ul>
                     </div>
                     <div className={clsx(style.timeLineSound)}>
-                         <div className={clsx(style.timeStartSound)}>0 : 00</div>
+                         <div className={clsx(style.timeStartSound)}>
+                              <PrintStart />
+                         </div>
                          <div className={clsx(style.lineTime)}>
-                         <input
-                              type="range"
-                              min="0"
-                              max={time}
-                              value={start}
-                              step="1"
-                              className="timeline"
+                         <input 
+                              className={clsx(style.inputRangeTime)}
+                              type="range" 
+                              min="0" 
+                              max={time} 
+                              value={start} 
+                              onChange={handleRangeChange}
                          />
                          </div>
-                         <div className={clsx(style.timeEndSound)}>4 : 25</div>
+                         <div className={clsx(style.timeEndSound)}>
+                              <PrintEnd />
+                         </div>
                     </div>
-                    <div className={clsx(style.soundSound)}></div>
+                    <div onClick={handleChangeMute} className={clsx(style.soundSound)}>                
+                         {!isMute ?
+                              <svg 
+                                   xmlns="http://www.w3.org/2000/svg" 
+                                   width="27" height="27" viewBox="0 0 24 24" 
+                                   fill="none" 
+                                   stroke="currentColor" 
+                                   strokeWidth="1" 
+                                   strokeLinecap="round" 
+                                   strokeLinejoin="round" 
+                                   className="feather feather-volume-2">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                              </svg>   :              
+                              <svg 
+                                   xmlns="http://www.w3.org/2000/svg" 
+                                   width="27" height="27" viewBox="0 0 24 24" 
+                                   fill="none" 
+                                   stroke="currentColor" 
+                                   strokeWidth="1" 
+                                   strokeLinecap="round" 
+                                   strokeLinejoin="round" 
+                                   className="feather feather-volume-x">
+                                        <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                                        <line x1="23" y1="9" x2="17" y2="15"></line>
+                                        <line x1="17" y1="9" x2="23" y2="15"></line>
+                              </svg>
+                         }
+                    </div>
                     <div className={clsx(style.infoSound)}>
-                         <div className={clsx(style.imgSound)}></div>
+                         <div className={clsx(style.imgSound)}>
+                              <img className={clsx(style.imageSound)} src="/yuta.jpg" />
+                         </div>
                          <div className={clsx(style.nameSound)}>
-                              <div className={clsx(style.titleSound)}></div>
-                              <div className={clsx(style.titleAuthor)}></div>
+                              <div className={clsx(style.titleSound)}>
+                                   <h4>Đánh Đổi</h4>
+                              </div>
+                              <div className={clsx(style.titleAuthor)}>
+                                   <p>Obito - MCK</p>
+                              </div>
                          </div>
                     </div>
                     <div className={clsx(style.statusSound)}>
                          <ul className={clsx(style.listStatusSound)}>
-                              <li className={clsx(style.likeSound)}></li>
-                              <li className={clsx(style.followAuthor)}></li>
-                              <li className={clsx(style.showNextSound)}></li>
+                              <li onClick={handleChangeLike} className={clsx(style.likeSound, isLiked && style.addActive)}>                         
+                                   <svg 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        width="26" height="26" viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        strokeWidth="1" 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        className="feather feather-heart">
+                                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 
+                                             7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                             </path>
+                                   </svg>
+                              </li>
+                              <li className={clsx(style.followAuthor)}>                       
+                                   <svg 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        width="26" height="26" viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        strokeWidth="1" 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        className="feather feather-user-plus">
+                                             <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                             <circle cx="8.5" cy="7" r="4"></circle>
+                                             <line x1="20" y1="8" x2="20" y2="14"></line>
+                                             <line x1="23" y1="11" x2="17" y2="11"></line>
+                                   </svg>
+                              </li>
+                              <li className={clsx(style.showNextSound)}>                     
+                                   <svg 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        width="26" height="26" viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        strokeWidth="1" 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        className="feather feather-align-right">
+                                             <line x1="21" y1="10" x2="7" y2="10"></line>
+                                             <line x1="21" y1="6" x2="3" y2="6"></line>
+                                             <line x1="21" y1="14" x2="3" y2="14"></line>
+                                             <line x1="21" y1="18" x2="7" y2="18"></line>
+                                   </svg>
+                              </li>
                          </ul>
                     </div>
                </div>

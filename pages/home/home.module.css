@@ -361,11 +361,80 @@
      display: flex;
      align-items: center;
      cursor: pointer;
+     width:auto;
+     margin-top:-7px;
 }
 
 .timeStartSound, .timeEndSound {
-     font-size:18px;
+     font-size:14px;
      font-weight: 500;
      margin-right:20px;
      margin-left:20px;
+     margin-top:7px;
 }
+
+.inputRangeTime {
+     margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 3px;
+    width: 350px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.inputRangeTime::-webkit-slider-runnable-track {
+     background: #d8d8d8;
+     border: none;
+}
+
+.inputRangeTime::-webkit-slider-thumb {
+     -webkit-appearance: none;
+    width: 3px;
+    height: 3px;
+    background-color: #d8d8d8;
+    box-shadow: -99.2vw 0 0 99.2vw #b91212;
+    border-radius: 50%;
+}
+
+.soundSound {
+     cursor: pointer;
+     margin-left:10px;
+}
+
+.infoSound {
+     display: flex;
+     margin-left:10px;
+     align-items: center;
+     cursor: pointer;
+}
+
+.imageSound {
+     width:45px;
+     height:45px;
+     border-radius: 10px;
+     margin-right:20px;
+}
+
+.titleSound {
+     font-size:17px;
+     font-weight: 600;
+     color:rgba(19, 19, 19, 0.966)
+}
+
+.titleAuthor {
+     font-size: 13px;
+     font-weight: 500;
+     color:rgb(117, 117, 117);
+}
+
+.listStatusSound {
+     display: flex;
+     align-items: center;
+}
+
+.listStatusSound li{
+     margin-right:25px;
+}
+   
