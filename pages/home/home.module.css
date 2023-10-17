@@ -338,7 +338,9 @@
      box-shadow: #03d6a866 0px 30px 90px;
      display: flex;
      align-items: center;
-     justify-content: space-evenly;
+     justify-content: center;
+     padding-left:30px;
+     padding-right:30px;
 }
 
 .listPlaySound {
@@ -366,10 +368,10 @@
 }
 
 .timeStartSound, .timeEndSound {
-     font-size:14px;
      font-weight: 500;
-     margin-right:20px;
-     margin-left:20px;
+     font-size:12px;
+     margin-right:10px;
+     margin-left:10px;
      margin-top:7px;
 }
 
@@ -379,7 +381,7 @@
     position: relative;
     overflow: hidden;
     height: 3px;
-    width: 350px;
+    width: 200px;
     cursor: pointer;
     border-radius: 10px;
 }
@@ -400,33 +402,38 @@
 
 .soundSound {
      cursor: pointer;
-     margin-left:10px;
+     margin-left:5px;
+     margin-right:10px;
 }
 
 .infoSound {
+     width:auto;
+     padding:20px;
      display: flex;
-     margin-left:10px;
      align-items: center;
      cursor: pointer;
+     margin-right:20px;
 }
 
 .imageSound {
-     width:45px;
-     height:45px;
+     width:40px;
+     height:40px;
      border-radius: 10px;
      margin-right:20px;
 }
 
 .titleSound {
-     font-size:17px;
+     font-size:15px;
      font-weight: 600;
-     color:rgba(19, 19, 19, 0.966)
+     color:rgba(19, 19, 19, 0.966);
+     margin-left:5px;
 }
 
 .titleAuthor {
      font-size: 13px;
      font-weight: 500;
      color:rgb(117, 117, 117);
+     margin-left:5px;
 }
 
 .listStatusSound {
@@ -437,4 +444,95 @@
 .listStatusSound li{
      margin-right:25px;
 }
-   
+
+.menuPage svg{
+     width:20px;
+     height:20px;
+}
+
+.SoundDisplay {
+     display: none;
+     align-items: center;
+     justify-content: space-between;
+     width:100%;
+     height:60px;
+     padding-top:10px;
+     padding-bottom:5px;
+     bottom:80px;
+     position: absolute;
+     background: rgb(13,226,216);
+     background: radial-gradient(circle, rgba(13,226,216,1) 0%, rgba(169,202,242,1) 100%);
+     color:rgb(43, 43, 43);
+}
+
+.SoundDisplay svg{
+     width:20px;
+     height:20px;
+}
+
+.infoSoundDisplay {
+     width:auto;
+     padding:20px;
+     display: flex;
+     align-items: center;
+     cursor: pointer;
+     margin-right:20px;
+}
+
+@media (max-width:1100px) {
+     .menuPage {
+          box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0) 0px 3px 7px -3px;
+          border-radius:0px;
+          justify-content: space-evenly;
+          height:80px;
+     }
+
+     .infoSound, .statusSound {
+          display:none;
+     }
+
+     .SoundDisplay {
+          display:flex;
+     }
+}
+
+@media (max-width:665px) {
+     .listPlaySound svg{
+          width:15px;
+          height:15px;
+          margin-right:20px;
+     }
+
+     .inputRangeTime {
+          width: 100px;
+     }
+}
+
+@media (max-width:490px) {
+     .menuPage {
+          padding-right:10px;
+          padding-left:10px;
+     }
+
+     .timeLineSound {
+          margin-left:-15px;
+     }
+}
+
+@media (max-width:437px) {
+     .inputRangeTime {
+          width:50px;
+     }
+}
+
+@media (max-width:390px) {
+     .inputRangeTime {
+          width:30px;
+     }
+
+     .listPlaySound svg{
+          width:15px;
+          height:15px;
+          margin-right:15px;
+     }
+}

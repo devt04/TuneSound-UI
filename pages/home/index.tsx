@@ -495,6 +495,75 @@ export default function Home() {
                          </div>
                     </div>
                </div>
+
+               <div className={clsx(style.SoundDisplay)}>
+                    <div className={clsx(style.infoSoundDisplay)}>
+                         <div className={clsx(style.imgSound)}>
+                              <img className={clsx(style.imageSound)} src="/yuta.jpg" />
+                         </div>
+                         <div className={clsx(style.nameSound)}>
+                              <div className={clsx(style.titleSound)}>
+                                   <h4>Full Album Đánh Đổi</h4>
+                              </div>
+                              <div className={clsx(style.titleAuthor)}>
+                                   <p>Obito - MCK</p>
+                              </div>
+                         </div>
+                    </div>
+                    <div className={clsx(style.statusSoundDisplay)}>
+                         <ul className={clsx(style.listStatusSound)}>
+                              <li onClick={handleChangeLike} className={clsx(style.likeSound, isLiked && style.addActive)}>                         
+                                   <svg 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        width="26" height="26" viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        strokeWidth="1" 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        className="feather feather-heart">
+                                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 
+                                             7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z">
+                                             </path>
+                                   </svg>
+                              </li>
+                              <li className={clsx(style.followAuthor)}>                       
+                                   <svg 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        width="26" height="26" viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        strokeWidth="1" 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        className="feather feather-user-plus">
+                                             <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                             <circle cx="8.5" cy="7" r="4"></circle>
+                                             <line x1="20" y1="8" x2="20" y2="14"></line>
+                                             <line x1="23" y1="11" x2="17" y2="11"></line>
+                                   </svg>
+                              </li>
+                              <li className={clsx(style.showNextSound)}>                     
+                                   <svg 
+                                        xmlns="http://www.w3.org/2000/svg" 
+                                        width="26" height="26" viewBox="0 0 24 24" 
+                                        fill="none" 
+                                        stroke="currentColor" 
+                                        strokeWidth="1" 
+                                        strokeLinecap="round" 
+                                        strokeLinejoin="round" 
+                                        className="feather feather-align-right">
+                                             <line x1="21" y1="10" x2="7" y2="10"></line>
+                                             <line x1="21" y1="6" x2="3" y2="6"></line>
+                                             <line x1="21" y1="14" x2="3" y2="14"></line>
+                                             <line x1="21" y1="18" x2="7" y2="18"></line>
+                                   </svg>
+                              </li>
+                         </ul>
+                    </div>
+               </div>
+
+
                <div className={clsx(style.menuPage)}>
                     <div className={clsx(style.handlePlaySound)}>
                          <ul className={clsx(style.listPlaySound)}>
@@ -641,7 +710,7 @@ export default function Home() {
                          </div>
                          <div className={clsx(style.nameSound)}>
                               <div className={clsx(style.titleSound)}>
-                                   <h4>Đánh Đổi</h4>
+                                   <h4>Full Album Đánh Đổi</h4>
                               </div>
                               <div className={clsx(style.titleAuthor)}>
                                    <p>Obito - MCK</p>
