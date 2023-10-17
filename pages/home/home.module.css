@@ -330,6 +330,7 @@
 
 .menuPage {
      width:100%;
+     min-width: 340px;
      height:90px;
      border-top-right-radius: 40px;
      border-top-left-radius: 40px;
@@ -455,6 +456,7 @@
      align-items: center;
      justify-content: space-between;
      width:100%;
+     min-width: 340px;
      height:60px;
      padding-top:10px;
      padding-bottom:5px;
