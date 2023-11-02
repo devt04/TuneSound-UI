@@ -12,17 +12,6 @@
      padding-bottom:200px;
 }
 
-/****************************/
-/**** Trending List Sound****/
-/****************************/
-
-.trendingList {
-     padding-top:50px;
-     color: rgba(31, 31, 31, 0.842);
-     font-size:20px;
-     margin:0 auto;
-}
-
 .titleCate {
      margin-left:100px;
 }
@@ -34,6 +23,35 @@
      background-color: rgba(31, 31, 31, 0.842);
      margin-top:10px;
      margin-left:2px;
+}
+
+
+@media (max-width:641px) {
+     .titleCate {
+          margin-left:50px;
+     }
+
+     .homePage {
+          padding-left:20px;
+          padding-right:20px;
+     }
+}
+
+@media (max-width:600px) {
+     .titleCate {
+          margin-left:10px;
+     }
+}
+
+/****************************/
+/**** Trending List Sound****/
+/****************************/
+
+.trendingList {
+     padding-top:50px;
+     color: rgba(31, 31, 31, 0.842);
+     font-size:20px;
+     margin:0 auto;
 }
 
 .listSoundTrend {
@@ -150,6 +168,25 @@
      color:rgba(77, 77, 77, 0.877);
 }
 
+@media (max-width:641px) {
+     .listNewSound {
+          width:90%;
+          align-items: center;
+          justify-content: center;
+          margin-left:50px;
+     }
+
+     .itemNewSound {
+          margin-top:70px;
+     }
+}
+
+@media (max-width:600px) {
+     .listNewSound {
+          margin-left:40px;
+     }
+}
+
 
 /****************************/
 /**** Attribute Hot List ****/
@@ -195,3 +232,28 @@
      font-weight:500;
      text-align: center;
 }
+
+@media (max-width:1020px) {
+     .itemAttributeHot {
+          margin-top:40px;
+     }
+
+     .listAttributeHot {
+          margin-top:5px;
+     }
+}
+
+@media (max-width:641px) {
+     .listAttributeHot {
+          width:90%;
+          justify-content: center;
+          margin-left:50px;
+     }
+}
+
+@media (max-width:600px) {
+     .listAttributeHot {
+          margin-left:40px;
+     }
+}
+

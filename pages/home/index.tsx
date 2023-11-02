@@ -8,11 +8,6 @@ import Link from "next/link";
 
 export default function Home() {
 
-     const styles = {
-          width: "100%",
-          height: "300px"
-     }
-
      const [isHover, setIsHover] = React.useState(false);
      const dataSoundServer = [
           {
@@ -130,9 +125,9 @@ export default function Home() {
                                                                  1.433V12.34l0 .008a1.64 1.64 0 0 0 .895 1.433 1.74 1.74 0 0 0 
                                                                  1.718-.016l8.63-5.338a1.61 1.61 0 0 0-.001-2.876L3.548.253A1.74 
                                                                  1.74 0 0 0 2.676.02Z" 
-                                                                 clip-rule="evenodd" 
+                                                                 clipRule="evenodd" 
                                                                  fill="#969699" 
-                                                                 fill-rule="evenodd"/>
+                                                                 fillRule="evenodd"/>
                                                        </svg>
                                                        <span>
                                                             {
@@ -149,9 +144,9 @@ export default function Home() {
                                                                  5.62a.48.48 0 0 1-.018.017L7.34 12.795a.5.5 0 0 1-.672 0L1.152 
                                                                  7.798a.495.495 0 0 1-.018-.017c-1.734-1.734-1.3-4.243.095-5.628.709-.704 
                                                                  1.688-1.148 2.795-1.068Z" 
-                                                                 clip-rule="evenodd" 
+                                                                 clipRule="evenodd" 
                                                                  fill="#969699" 
-                                                                 fill-rule="evenodd"/>
+                                                                 fillRule="evenodd"/>
                                                        </svg>
                                                        <span>
                                                             {
@@ -179,7 +174,6 @@ export default function Home() {
                          {dataSoundServer.map((data,index) => {
                               if (data.new === true) {
                                    return (
-                                        <>
                                         <div 
                                              onMouseEnter={() => {setIsHover(true)}}
                                              onMouseLeave={() => {setIsHover(false)}}
@@ -193,7 +187,6 @@ export default function Home() {
                                                   {data.name_sound} - {data.attribute_sound}
                                              </div>
                                         </div>
-                                        </>
                                    )
                               }
                          })}
@@ -210,14 +203,12 @@ export default function Home() {
                          {dataSoundServer.map((data, index) => {
                               if(data.attribute_hot === true) {
                                    return (
-                                        <>
                                              <div key={index} className={clsx(style.itemAttributeHot)}>
                                                   <img src={data.image_attribute_sound} alt=""/>
                                                   <div className={clsx(style.nameAttribute)}>
                                                        {data.attribute_sound}
                                                   </div>
                                              </div>
-                                        </>
                                    )
                               }
                          })}
