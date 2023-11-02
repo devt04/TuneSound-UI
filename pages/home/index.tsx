@@ -5,90 +5,12 @@ import style from "./home.module.css"
 import React from "react";
 import Layout from "../layout";
 import Link from "next/link";
+import API from "@/dataSongs.json"
 
 export default function Home() {
 
      const [isHover, setIsHover] = React.useState(false);
-     const dataSoundServer = [
-          {
-               "id" : 1,
-               "name_sound" : "Đánh đổi",
-               "image_sound" : "/danh-doi.jpg",
-               "attribute_sound" : "Obito",
-               "total_liked" : 1200,
-               "total_played" : 10000,
-               "file_sound" : "./danh-doi.mp3",
-               "image_attribute_sound" : "/obito.jpg",
-               "attribute_hot" : true,
-               "trends" : true,
-               "new": true,
-          },
-          {
-               "id" : 2,
-               "name_sound" : "Sài Gòn ơi",
-               "image_sound" : "/saigonoi.jpg",
-               "attribute_sound" : "Obito",
-               "total_liked" : 1200,
-               "total_played" : 10000,
-               "file_sound" : "./danh-doi.mp3",
-               "image_attribute_sound" : "/obito.jpg",
-               "attribute_hot" :false,
-               "trends" : true,
-               "new": true,
-          },
-          {
-               "id" : 3,
-               "name_sound" : "Khó vẽ nụ cười",
-               "image_sound" : "/khovenucuoi.jpg",
-               "attribute_sound" : "Đạt G",
-               "total_liked" : 1200,
-               "total_played" : 10000,
-               "file_sound" : "./danh-doi.mp3",
-               "image_attribute_sound" : "/datg.jpg",
-               "attribute_hot" : true,
-               "trends" : true,
-               "new": true,
-          },
-          {
-               "id" : 4,
-               "name_sound" : "Không phải Gu",
-               "image_sound" : "/khongphaigu.jpg",
-               "attribute_sound" : "Hieu Thu Hai ft Bray",
-               "total_liked" : 1200,
-               "total_played" : 10000,
-               "file_sound" : "./danh-doi.mp3",
-               "image_attribute_sound" : "/khongphaigu.jpg",
-               "attribute_hot" : true,
-               "trends" : true,
-               "new": true,
-          },
-          {
-               "id" : 5,
-               "name_sound" : "Đi về nhà",
-               "image_sound" : "/divenha.webp",
-               "attribute_sound" : "Đen vâu",
-               "total_liked" : 1200,
-               "total_played" : 10000,
-               "file_sound" : "./danh-doi.mp3",
-               "image_attribute_sound" : "/denvau.webp",
-               "attribute_hot" : true,
-               "trends" : true,
-               "new": true,
-          },
-          {
-               "id" : 6,
-               "name_sound" : "Cô đơn trên Sofa",
-               "image_sound" : "/codontrensofa.jpg",
-               "attribute_sound" : "Ho Ngoc Ha",
-               "total_liked" : 1200,
-               "total_played" : 10000,
-               "file_sound" : "./danh-doi.mp3",
-               "image_attribute_sound" : "/hongocha.webp",
-               "attribute_hot" : true,
-               "trends" : true,
-               "new": false,
-          }
-     ]
+     const dataSoundServer = API
 
      return (
           <>  

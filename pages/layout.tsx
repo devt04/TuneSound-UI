@@ -254,7 +254,7 @@ export default function Layout ({
                          <div className={clsx(style.categoryDisplay)}>
                               <ul className={clsx(style.listCategoryDisplay)}>
                                    <li className={clsx(style.itemListDisplay)}>
-                                        <Link href="/home">
+                                        <Link href="/songs">
                                              Bài hát
                                         </Link>
                                    </li>
@@ -335,7 +335,7 @@ export default function Layout ({
                     <div className={clsx(style.categoryHead)}>
                          <ul className={clsx(style.listCategory)}>
                               <li className={clsx(style.itemList)}>
-                                   <Link href="/home" title="song">
+                                   <Link href="/songs" title="song">
                                         Bài hát
                                    </Link>
                               </li>
