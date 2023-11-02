@@ -1,19 +1,30 @@
-"use client"
-import React from "react"
-import Layout from "../layout"
-import clsx from "clsx"
-import style from './songs.module.css'
-import Link from "next/link"
-import API from "@/dataSongs.json"
-import '/public/globals.css'
-import Pagination from "@/layout/pagination"
+"use client";
+import React from "react";
+import {useRouter} from "next/router";
+import Layout from "../layout";
+import clsx from "clsx";
+import style from './songs.module.css';
+import API from "@/dataSongs.json";
+import '/public/globals.css';
 
 export default function SongsPage() {
+
+     const router = useRouter();
+     const goToChillList = () => {
+          router.push("/chill-list");
+     }
+     const goToRapList = () => {
+          router.push("/hiphop-rap-list");
+     }
+     const goToRemixList = () => {
+          router.push("/remix-list");
+     }
 
      const dataSongsServer = API;
      return (
           <>
           <Layout>
+          </Layout>
                <div className={clsx(style.songsPage)}>
                     <div className={clsx(style.chillListSound)}>
                          <div className={clsx(style.titleCate)}>
@@ -84,9 +95,11 @@ export default function SongsPage() {
                               })}
                          </div>
 
-                         <div className={clsx(style.paginationCate)}>
-                              <Pagination />
-                         </div>
+                         <button 
+                              onClick={goToChillList}
+                              className={clsx(style.btnShowMore)}>
+                                   Xem thêm
+                         </button>
                     </div>
 
                     <div className={clsx(style.hiphopRapListSound)}>
@@ -158,9 +171,11 @@ export default function SongsPage() {
                               })}
                          </div>
 
-                         <div className={clsx(style.paginationCate)}>
-                              <Pagination />
-                         </div>
+                         <button
+                              onClick={goToRapList}
+                              className={clsx(style.btnShowMore)}>
+                                   Xem thêm
+                         </button>
                     </div>
 
                     <div className={clsx(style.remixListSound)}>
@@ -232,12 +247,13 @@ export default function SongsPage() {
                               })}
                          </div>
 
-                         <div className={clsx(style.paginationCate)}>
-                              <Pagination />
-                         </div>
+                         <button 
+                              onClick={goToRemixList}
+                              className={clsx(style.btnShowMore)}>
+                                   Xem thêm
+                         </button>
                     </div>
                </div>
-          </Layout>
           </>
           
      )

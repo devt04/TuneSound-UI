@@ -8,7 +8,6 @@
      left: 0;
      right: 0;
      position: relative;
-     z-index: -100;
      padding-bottom:200px;
 }
 
@@ -86,9 +85,23 @@
      margin-right:20px;
 }
 
-.paginationCate {
+.btnShowMore {
      margin-left:100px;
-     margin-top:20px;
+     margin-top:40px;
+     width:auto;
+     height:auto;
+     padding:10px;
+     background-color: rgb(18, 89, 99);
+     border-radius:10px;
+     color:white;
+     font-size:15px;
+     font-weight:600;
+}
+
+.btnShowMore:hover {
+     background-color: white;
+     color:rgba(0, 0, 0, 0.795);
+     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 
@@ -177,7 +190,7 @@
           margin-left:50px;
      }
 
-     .paginationCate {
+     .btnShowMore {
           margin-left:50px;
      }
 }
@@ -192,7 +205,7 @@
           margin-left:20px;
      }
 
-     .paginationCate {
+     .btnShowMore {
           margin-left:20px;
      }
 }

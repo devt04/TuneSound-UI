@@ -285,17 +285,17 @@ export default function Layout ({
                                         {isHide && 
                                              <ul className={clsx(style.listPlaylist)}>
                                                   <li>
-                                                       <Link href="">
+                                                       <Link href="/chill-list">
                                                             Chill &#9756;
                                                        </Link>
                                                   </li>
                                                   <li>
-                                                       <Link href="">
+                                                       <Link href="/remix-list">
                                                             Remix &#9756;
                                                        </Link>
                                                   </li>
                                                   <li>
-                                                       <Link href="">
+                                                       <Link href="/hiphop-rap-list">
                                                             Hip-Hop & Rap &#9756;
                                                        </Link>
                                                   </li>
@@ -366,17 +366,17 @@ export default function Layout ({
                                    {isHide && 
                                         <ul className={clsx(style.listPlaylist)}>
                                              <li>
-                                                  <Link href="">
+                                                  <Link href="chill-list">
                                                        Chill &#9756;
                                                   </Link>
                                              </li>
                                              <li>
-                                                  <Link href="">
+                                                  <Link href="remix-list">
                                                        Remix &#9756;
                                                   </Link>
                                              </li>
                                              <li>
-                                                  <Link href="">
+                                                  <Link href="hiphop-rap-list">
                                                        Hip-Hop & Rap &#9756;
                                                   </Link>
                                              </li>
