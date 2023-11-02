@@ -4,6 +4,7 @@ import React from "react"
 import style from "./pagination.module.css"
 import '/public/globals.css'
 
+
 export default function Pagination (start: any, limit:any) {
 
 
