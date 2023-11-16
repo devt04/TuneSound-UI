@@ -303,7 +303,7 @@ export default function Layout ({
                                         }
                                    </li>
                                    <li className={clsx(style.itemListDisplay)}>
-                                        <Link href="">
+                                        <Link href="/liked">
                                              Yêu thích
                                         </Link>
                                    </li>
@@ -384,7 +384,7 @@ export default function Layout ({
                                    }
                               </li>
                               <li className={clsx(style.itemList)}>
-                                   <Link href="">
+                                   <Link href="/liked">
                                         Yêu thích
                                    </Link>
                               </li>

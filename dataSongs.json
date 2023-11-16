@@ -11,7 +11,8 @@
           "attribute_hot" : true,
           "trends" : true,
           "new": true,
-          "category_sound" : "HipHop & Rap"
+          "category_sound" : "HipHop & Rap",
+          "liked" : true
      },
      {
           "id" : 2,
@@ -25,7 +26,8 @@
           "attribute_hot" :false,
           "trends" : true,
           "new": true,
-          "category_sound" : "HipHop & Rap"
+          "category_sound" : "HipHop & Rap",
+          "liked" : false
      },
      {
           "id" : 3,
@@ -39,7 +41,8 @@
           "attribute_hot" : true,
           "trends" : true,
           "new": true,
-          "category_sound" : "Chill"
+          "category_sound" : "Chill",
+          "liked" : true
      },
      {
           "id" : 4,
@@ -53,7 +56,8 @@
           "attribute_hot" : true,
           "trends" : true,
           "new": true,
-          "category_sound" : "HipHop & Rap"
+          "category_sound" : "HipHop & Rap",
+          "liked" : true
      },
      {
           "id" : 5,
@@ -67,7 +71,8 @@
           "attribute_hot" : true,
           "trends" : true,
           "new": true,
-          "category_sound" : "HipHop & Rap"
+          "category_sound" : "HipHop & Rap",
+          "liked" : true
      },
      {
           "id" : 6,
@@ -81,6 +86,7 @@
           "attribute_hot" : true,
           "trends" : true,
           "new": false,
-          "category_sound" : "Chill"
+          "category_sound" : "Chill",
+          "liked" : false
      }
 ]
